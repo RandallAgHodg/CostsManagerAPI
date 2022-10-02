@@ -1,9 +1,8 @@
 ﻿namespace CostsManagerAPI.Contracts.Data;
 
-public class CostDto
+public class GroupDto
 {
     public Guid Id { get; init; } = default!;
     public string Name { get; init; } = default!;
-    public string Description { get; init; } = default!;
-    public float Amount { get; init; } = default!;
+    public DateTime CreatedAt { get; init; } = default!;
 }

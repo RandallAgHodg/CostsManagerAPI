@@ -1,4 +1,4 @@
-﻿using CostsManagerAPI.Contracts;
+﻿using CostsManagerAPI.Contracts.Data;
 using CostsManagerAPI.Domain;
 
 namespace CostsManagerAPI.Mapping;
@@ -13,6 +13,16 @@ public static class DomainMapperToDto
             Name = cost.Name,
             Description = cost.Description,
             Amount = cost.Amount
+        };
+    }
+
+    public static GroupDto ToGroupDto(this Group group)
+    {
+        return new GroupDto
+        {
+            Id = group.Id,
+            Name = group.Name,
+            CreatedAt = group.CreatedAt
         };
     }
 }

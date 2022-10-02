@@ -1,5 +1,4 @@
-﻿using CostsManagerAPI.Contracts;
-using CostsManagerAPI.Domain;
+﻿using CostsManagerAPI.Contracts.Data;
 
 namespace CostsManagerAPI.Repositories;
 

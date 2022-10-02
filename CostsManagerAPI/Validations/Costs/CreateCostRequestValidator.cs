@@ -1,8 +1,8 @@
-﻿using CostsCManagerAPI.Contracts.Requests;
+﻿using CostsManagerAPI.Contracts.Requests.Costs;
 using FastEndpoints;
 using FluentValidation;
 
-namespace CostsCManagerAPI.Middleware;
+namespace CostsManagerAPI.Validations.Costs;
 
 public class CreateCostRequestValidator : Validator<CreateCostRequest>
 {

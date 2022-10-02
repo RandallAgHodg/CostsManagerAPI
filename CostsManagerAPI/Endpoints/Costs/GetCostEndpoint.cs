@@ -1,10 +1,10 @@
-﻿using CostsCManagerAPI.Contracts.Requests;
-using CostsCManagerAPI.Contracts.Responses;
-using CostsCManagerAPI.Mapping;
-using CostsCManagerAPI.Services;
+﻿using CostsManagerAPI.Contracts.Requests.Costs;
+using CostsManagerAPI.Contracts.Responses.Costs;
+using CostsManagerAPI.Mapping;
+using CostsManagerAPI.Services;
 using FastEndpoints;
 
-namespace CostsManagerAPI.Endpoints;
+namespace CostsManagerAPI.Endpoints.Costs;
 
 public class GetCostEndpoint : Endpoint<GetCostRequest, CostResponse>
 {

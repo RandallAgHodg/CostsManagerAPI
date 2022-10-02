@@ -1,8 +1,8 @@
-﻿using CostsCManagerAPI.Contracts.Requests;
-
+﻿using CostsManagerAPI.Contracts.Requests.Costs;
+using CostsManagerAPI.Contracts.Requests.Groups;
 using CostsManagerAPI.Domain;
 
-namespace CostsCManagerAPI.Mapping;
+namespace CostsManagerAPI.Mapping;
 
 public static class ApiContractToDomainMapper
 {
@@ -25,6 +25,25 @@ public static class ApiContractToDomainMapper
             Name = updateCostRequest.Name,
             Description = updateCostRequest.Description,
             Amount = updateCostRequest.Amount
+        };
+    }
+
+    public static Group ToGroup(this CreateGroupRequest createGroupRequest)
+    {
+        return new Group
+        {
+            Id = Guid.NewGuid(),
+            Name = createGroupRequest.Name,
+            CreatedAt =DateTime.Now
+        };
+    }
+
+    public static Group ToGroup(this UpdateGroupRequest updateGroupRequest)
+    {
+        return new Group
+        {
+            Id = updateGroupRequest.Id,
+            Name = updateGroupRequest.Name
         };
     }
 }

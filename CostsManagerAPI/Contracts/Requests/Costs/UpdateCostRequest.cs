@@ -1,4 +1,4 @@
-﻿namespace CostsCManagerAPI.Contracts.Requests;
+﻿namespace CostsManagerAPI.Contracts.Requests.Costs;
 
 public class UpdateCostRequest
 {

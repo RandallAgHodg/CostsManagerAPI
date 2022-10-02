@@ -1,6 +1,6 @@
 ﻿using CostsManagerAPI.Domain;
 
-namespace CostsCManagerAPI.Services;
+namespace CostsManagerAPI.Services;
 
 public interface ICostService
 {

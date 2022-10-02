@@ -1,9 +1,9 @@
 using System.Text.Json;
-using CostsCManagerAPI.Contracts.Responses;
-using CostsCManagerAPI.Middleware;
-using CostsCManagerAPI.Services;
+using CostsManagerAPI.Contracts.Responses;
 using CostsManagerAPI.Database;
 using CostsManagerAPI.Repositories;
+using CostsManagerAPI.Services;
+using CostsManagerAPI.Validations;
 using FastEndpoints;
 using FastEndpoints.Security;
 using FastEndpoints.Swagger;
@@ -34,6 +34,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders();
 builder.Services.AddSingleton<ICostRepository, CostRepository>();
 builder.Services.AddSingleton<ICostService, CostService>();
+builder.Services.AddSingleton<IGroupRepository, GroupRepository>();
+builder.Services.AddSingleton<IGroupService, GroupService>();
 
 var app = builder.Build();
 app.UseAuthentication();

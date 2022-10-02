@@ -4,7 +4,7 @@ using CostsManagerAPI.Repositories;
 using FluentValidation;
 using FluentValidation.Results;
 
-namespace CostsCManagerAPI.Services;
+namespace CostsManagerAPI.Services;
 
 public class CostService : ICostService
 {
@@ -30,7 +30,7 @@ public class CostService : ICostService
 
         var existsCostWithThatId = await _costRepository.GetAsync(cost.Id);
         
-        if (existsCostWithThatName)
+        if (existsCostWithThatId is not null)
         {
             var message = $"A product with id ${cost.Id} already exists";
             throw new ValidationException(message, new[]

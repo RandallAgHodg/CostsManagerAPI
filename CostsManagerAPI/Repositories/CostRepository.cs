@@ -1,4 +1,4 @@
-﻿using CostsManagerAPI.Contracts;
+﻿using CostsManagerAPI.Contracts.Data;
 using CostsManagerAPI.Database;
 using CostsManagerAPI.Domain;
 using CostsManagerAPI.Mapping;

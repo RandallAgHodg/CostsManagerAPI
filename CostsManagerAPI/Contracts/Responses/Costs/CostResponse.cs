@@ -1,4 +1,4 @@
-﻿namespace CostsCManagerAPI.Contracts.Responses;
+﻿namespace CostsManagerAPI.Contracts.Responses.Costs;
 
 public class CostResponse
 {

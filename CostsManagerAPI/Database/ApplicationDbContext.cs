@@ -17,4 +17,6 @@ public class ApplicationDbContext : IdentityDbContext
     }
 
     public DbSet<Cost> Costs { get; set; }
+    public DbSet<Group> Groups { get; set; }
+    
 }

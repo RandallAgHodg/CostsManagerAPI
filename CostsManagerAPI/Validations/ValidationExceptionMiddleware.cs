@@ -1,7 +1,7 @@
-﻿using CostsCManagerAPI.Contracts.Responses;
+﻿using CostsManagerAPI.Contracts.Responses;
 using FluentValidation;
 
-namespace CostsCManagerAPI.Middleware;
+namespace CostsManagerAPI.Validations;
 
 public class ValidationExceptionMiddleware
 {

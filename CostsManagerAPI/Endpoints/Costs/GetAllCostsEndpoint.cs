@@ -1,11 +1,9 @@
-﻿using CostsCManagerAPI.Contracts.Responses;
-using CostsCManagerAPI.Mapping;
-using CostsCManagerAPI.Services;
+﻿using CostsManagerAPI.Contracts.Responses.Costs;
 using CostsManagerAPI.Mapping;
-using CostsManagerAPI.Repositories;
+using CostsManagerAPI.Services;
 using FastEndpoints;
 
-namespace CostsManagerAPI.Endpoints;
+namespace CostsManagerAPI.Endpoints.Costs;
 
 public class GetAllCostsEndpoint : EndpointWithoutRequest<GetAllCostsResponse>
 {

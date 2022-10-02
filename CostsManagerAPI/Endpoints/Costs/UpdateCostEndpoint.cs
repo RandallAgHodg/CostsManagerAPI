@@ -1,10 +1,10 @@
-﻿using CostsCManagerAPI.Contracts.Requests;
-using CostsCManagerAPI.Contracts.Responses;
-using CostsCManagerAPI.Mapping;
-using CostsCManagerAPI.Services;
+﻿using CostsManagerAPI.Contracts.Requests.Costs;
+using CostsManagerAPI.Contracts.Responses.Costs;
+using CostsManagerAPI.Mapping;
+using CostsManagerAPI.Services;
 using FastEndpoints;
 
-namespace CostsManagerAPI.Endpoints;
+namespace CostsManagerAPI.Endpoints.Costs;
 
 public class UpdateCostEndpoint : Endpoint<UpdateCostRequest, CostResponse>
 {
@@ -15,6 +15,12 @@ public class UpdateCostEndpoint : Endpoint<UpdateCostRequest, CostResponse>
         _costService = costService;
     }
 
+    public override void Configure()
+    {
+        Put("costs/{id:guid}");
+        AllowAnonymous();
+    }
+    
     public override async Task HandleAsync(UpdateCostRequest req, CancellationToken ct)
     {
         var existingCost = await _costService.GetAsync(req.Id);
@@ -31,9 +37,4 @@ public class UpdateCostEndpoint : Endpoint<UpdateCostRequest, CostResponse>
         await SendOkAsync(costResponse, ct);
     }
 
-    public override void Configure()
-    {
-        Put("costs/{id:guid}");
-        AllowAnonymous();
-    }
 }

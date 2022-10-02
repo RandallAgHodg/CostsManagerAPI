@@ -1,8 +1,9 @@
-﻿using CostsCManagerAPI.Contracts.Responses;
-using CostsManagerAPI.Endpoints;
+﻿using CostsManagerAPI.Contracts.Responses;
+using CostsManagerAPI.Contracts.Responses.Costs;
+using CostsManagerAPI.Endpoints.Costs;
 using FastEndpoints;
 
-namespace CostsCManagerAPI.Summaries;
+namespace CostsManagerAPI.Summaries;
 
 public class UpdateCostSummary : Summary<UpdateCostEndpoint>
 {

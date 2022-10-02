@@ -1,9 +1,9 @@
-﻿using CostsCManagerAPI.Contracts.Requests;
-using CostsCManagerAPI.Contracts.Responses;
-using CostsManagerAPI.Endpoints;
+﻿using CostsManagerAPI.Contracts.Requests.Costs;
+using CostsManagerAPI.Contracts.Responses;
+using CostsManagerAPI.Endpoints.Costs;
 using FastEndpoints;
 
-namespace CostsCManagerAPI.Summaries;
+namespace CostsManagerAPI.Summaries;
 
 public class DeleteCostSummary : Summary<DeleteCostEndpoint>
 {
