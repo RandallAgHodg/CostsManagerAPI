@@ -1,5 +1,9 @@
-using CostsCManagerAPI.Database;
+using System.Text.Json;
+using CostsCManagerAPI.Contracts.Responses;
 using CostsCManagerAPI.Middleware;
+using CostsCManagerAPI.Services;
+using CostsManagerAPI.Database;
+using CostsManagerAPI.Repositories;
 using FastEndpoints;
 using FastEndpoints.Security;
 using FastEndpoints.Swagger;
@@ -10,36 +14,43 @@ var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
 var jwtSecret = config.GetValue<string>("jwt:SecretKey");
 var connectionString = config.GetValue<string>("Database:ConnectionString");
-var serverVersion = ServerVersion.AutoDetect(connectionString);
 var clientUrl = config.GetValue<string>("FrontendUrl");
+var serverVersion = ServerVersion.AutoDetect(connectionString);
 
 builder.Services.AddFastEndpoints();
 builder.Services.AddSwaggerDoc();
 builder.Services.AddAuthenticationJWTBearer(jwtSecret);
-builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbContext<ApplicationDbContext>(
     dbContextOptions =>
         dbContextOptions
             .UseMySql(connectionString, serverVersion)
             .LogTo(Console.WriteLine, LogLevel.Information)
             .EnableSensitiveDataLogging()
-            .EnableDetailedErrors()
+            .EnableDetailedErrors(),
+    ServiceLifetime.Singleton
 );
-
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
+builder.Services.AddSingleton<ICostRepository, CostRepository>();
+builder.Services.AddSingleton<ICostService, CostService>();
 
 var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiddleware<ValidationExceptionMiddleware>();
-app.UseFastEndpoints();
+app.UseFastEndpoints(options =>
+{
+    options.Errors.ResponseBuilder = (failures, _) =>
+    {
+        return new ValidationFailureResponse
+        {
+            Errors = failures.Select(error => error.ErrorMessage).ToList()
+        };
+    };
+    options.Errors.StatusCode = StatusCodes.Status422UnprocessableEntity;
+    options.Serializer.Options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+});
 app.UseOpenApi();
-app.UseCors(req =>
-    req.WithOrigins(clientUrl)
-        .AllowAnyHeader()
-        .AllowAnyMethod()
-);
 app.UseSwaggerUi3(settings => settings.ConfigureDefaults());
 app.Run();

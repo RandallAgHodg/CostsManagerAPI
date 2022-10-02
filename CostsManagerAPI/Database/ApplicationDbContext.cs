@@ -1,9 +1,8 @@
-﻿
-using Microsoft.AspNetCore.Identity;
+﻿using CostsManagerAPI.Domain;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace CostsCManagerAPI.Database;
+namespace CostsManagerAPI.Database;
 
 public class ApplicationDbContext : IdentityDbContext
 {
@@ -16,4 +15,6 @@ public class ApplicationDbContext : IdentityDbContext
     {
         base.OnModelCreating(builder);
     }
+
+    public DbSet<Cost> Costs { get; set; }
 }
