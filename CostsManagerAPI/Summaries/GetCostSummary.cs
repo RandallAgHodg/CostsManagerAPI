@@ -13,5 +13,6 @@ public class GetCostSummary : Summary<GetCostEndpoint>
         Summary = "Get a singular cost by its id";
         Response<CostResponse>(200, "Cost was successfully found and returned");
         Response<ValidationFailureResponse>(400, "The request did not pass validation checks");
+        Response(404, "The cost was not found");
     }
 }

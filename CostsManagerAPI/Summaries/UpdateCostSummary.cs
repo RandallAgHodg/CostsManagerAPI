@@ -13,5 +13,6 @@ public class UpdateCostSummary : Summary<UpdateCostEndpoint>
         Summary = "Update an specific cost";
         Response<CostResponse>(200, "The cost was successfully updated");
         Response<ValidationFailureResponse>(400, "The request did not pass validation checks");
+        Response(404, "The cost was not found");
     }
 }

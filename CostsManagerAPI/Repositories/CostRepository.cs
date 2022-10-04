@@ -17,14 +17,18 @@ public class CostRepository : ICostRepository
 
     public async Task<CostDto?> GetAsync(Guid id)
     {
-        var cost = await _context.Costs.AsNoTracking()
-            .FirstOrDefaultAsync(x => x.Id == id);
+        var cost = await _context.Costs
+            .AsNoTracking()
+            .FirstOrDefaultAsync(c => c.Id == id);
         return cost?.ToCostDto();
     }
 
-    public async Task<IEnumerable<CostDto>> GetAllAsync()
+    public async Task<IEnumerable<CostDto>> GetAllAsync(Guid groupId)
     {
-        var costs = await _context.Costs.AsNoTracking().ToListAsync();
+        var costs = await _context.Costs
+            .Where(c => c.GroupId == groupId)
+            .AsNoTracking()
+            .ToListAsync();
         return costs.Select(cost => cost.ToCostDto());
     }
 

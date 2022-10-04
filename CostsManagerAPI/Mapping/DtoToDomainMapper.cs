@@ -12,7 +12,8 @@ public static class DtoToDomainMapper
             Id = costDto.Id,
             Name = costDto.Name,
             Description = costDto.Description,
-            Amount = costDto.Amount
+            Amount = costDto.Amount,
+            GroupId = costDto.GroupId
         };
     }
 
@@ -22,7 +23,8 @@ public static class DtoToDomainMapper
         {
             Id = groupDto.Id,
             Name = groupDto.Name,
-            CreatedAt = groupDto.CreatedAt
+            CreatedAt = groupDto.CreatedAt,
+            Costs = groupDto.Costs
         };
     }
 }

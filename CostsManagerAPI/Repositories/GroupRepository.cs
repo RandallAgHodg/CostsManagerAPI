@@ -25,13 +25,19 @@ public class GroupRepository : IGroupRepository
 
     public async Task<GroupDto?> GetAsync(Guid id)
     {
-        var group = await _context.Groups.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+        var group = await _context.Groups
+            .Include(g => g.Costs)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Id == id);
         return group?.ToGroupDto();
     }
 
     public async Task<IEnumerable<GroupDto>> GetAllAsync()
     {
-        var groups = await _context.Groups.AsNoTracking().ToListAsync();
+        var groups = await _context.Groups
+            .Include(g => g.Costs)
+            .AsNoTracking()
+            .ToListAsync();
         return groups.Select(x => x.ToGroupDto());
     }
 

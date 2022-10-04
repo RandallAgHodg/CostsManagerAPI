@@ -39,7 +39,8 @@ public static class DomainToApiContractMapper
         {
             Id = group.Id,
             Name = group.Name,
-            CreatedAt = group.CreatedAt
+            CreatedAt = group.CreatedAt,
+            Costs = group.Costs
         };
     }
 
@@ -52,7 +53,8 @@ public static class DomainToApiContractMapper
                 {
                     Id = g.Id,
                     Name = g.Name,
-                    CreatedAt = g.CreatedAt
+                    CreatedAt = g.CreatedAt,
+                    Costs = g.Costs
                 }
             )
         };

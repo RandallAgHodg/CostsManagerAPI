@@ -21,7 +21,7 @@ public class CostService : ICostService
 
         if (existsCostWithThatName)
         {
-            var message = $"A product with name ${cost.Name} already exists";
+            var message = $"A cost with name {cost.Name} already exists. Consider to update the existing cost.";
             throw new ValidationException(message, new[]
             {
                 new ValidationFailure(nameof(Cost), message)
@@ -32,7 +32,7 @@ public class CostService : ICostService
         
         if (existsCostWithThatId is not null)
         {
-            var message = $"A product with id ${cost.Id} already exists";
+            var message = $"A cost with id {cost.Id} already exists";
             throw new ValidationException(message, new[]
             {
                 new ValidationFailure(nameof(Cost), message)
@@ -49,9 +49,9 @@ public class CostService : ICostService
         return costDto?.ToCost();
     }
 
-    public async Task<IEnumerable<Cost>> GetAllAsync()
+    public async Task<IEnumerable<Cost>> GetAllAsync(Guid groupId)
     {
-        var costsDto = await _costRepository.GetAllAsync();
+        var costsDto = await _costRepository.GetAllAsync(groupId);
         return costsDto.Select(x => x.ToCost());
     }
 

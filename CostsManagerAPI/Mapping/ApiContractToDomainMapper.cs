@@ -13,7 +13,8 @@ public static class ApiContractToDomainMapper
             Id = Guid.NewGuid(),
             Name = createCostRequest.Name,
             Description = createCostRequest.Description,
-            Amount = createCostRequest.Amount
+            Amount = createCostRequest.Amount,
+            GroupId = createCostRequest.GroupId
         };
     }
 
@@ -24,7 +25,8 @@ public static class ApiContractToDomainMapper
             Id = updateCostRequest.Id,
             Name = updateCostRequest.Name,
             Description = updateCostRequest.Description,
-            Amount = updateCostRequest.Amount
+            Amount = updateCostRequest.Amount,
+            GroupId = updateCostRequest.GroupId
         };
     }
 
@@ -34,7 +36,7 @@ public static class ApiContractToDomainMapper
         {
             Id = Guid.NewGuid(),
             Name = createGroupRequest.Name,
-            CreatedAt =DateTime.Now
+            CreatedAt = DateTime.Now
         };
     }
 

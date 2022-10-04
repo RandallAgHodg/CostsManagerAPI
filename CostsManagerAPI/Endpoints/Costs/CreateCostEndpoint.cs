@@ -16,7 +16,7 @@ public class CreateCostEndpoint : Endpoint<CreateCostRequest>
 
     public override void Configure()
     {
-        Post("costs");
+        Post("groups/{groupid:guid}/costs");
         AllowAnonymous();
     }
 

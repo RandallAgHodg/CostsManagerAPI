@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using CostsManagerAPI.Contracts.Responses;
 using CostsManagerAPI.Database;
 using CostsManagerAPI.Repositories;
